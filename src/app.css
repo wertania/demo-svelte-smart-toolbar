@@ -1,0 +1,18 @@
+/* import font-awesome */
+/* @import './../node_modules/@fortawesome/fontawesome-free/css/all.min.css'; */
+
+/* @tailwind base; */
+@tailwind components;
+@tailwind utilities;
+
+*,
+::before,
+::after {
+  border-width: 0;
+  border-style: solid;
+  border-color: theme('borderColor.DEFAULT', currentColor);
+}
+
+body {
+    background-color: rgb(242, 242, 242);
+}

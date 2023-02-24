@@ -1,0 +1,74 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Svelte + TS + Vite App</title>
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+  <script src="/dist/webcomponent-smart-toolbar.js"></script>
+  <!-- <script type="module" src="/src/main.ts"></script> -->
+  <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+    integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+    crossorigin="anonymous"></script>
+
+  <style>
+    smart-toolbar {
+      height: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="text-3xl font-bold underline">
+    test svelte ce <i class="fas fa-check"></i>
+  </h1>
+  <smart-toolbar>
+    <div slot="before">
+      <span class="text-lg">Before</span>
+    </div>
+  </smart-toolbar>
+
+  <button title="change" id="cg">Change content</button>
+
+  <script>
+    // set some items:
+    console.log(document.querySelector('smart-toolbar').items);
+    const items = [
+      {
+        name: "share",
+        label: "Share",
+        icon: "fas fa-share",
+        subMenuItems: [
+          {
+            name: "export-url",
+            icon: "fas fa-link",
+            label: "Export URL",
+            action: (name) => {
+              console.log("send link");
+            },
+          },
+        ],
+      },
+    ];
+    document.querySelector('smart-toolbar').items = items;
+    document.querySelector('smart-toolbar').showLabels = true;
+
+    document.getElementById('cg').addEventListener('click', () => {
+      document.querySelector('smart-toolbar').items = [
+        {
+          "name": 'test',
+          "label": 'test',
+          action() {
+            console.log('test 222');
+          }
+        },
+      ];
+    });
+  </script>
+
+</body>
+
+</html>
